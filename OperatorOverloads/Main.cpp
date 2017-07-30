@@ -42,6 +42,7 @@ void main()
 	//CopyConstructorsDemo();
 	//PersonDemo();
 
+	//forcing template to create an int version
 	float a = 10.9;
 	cout <<sqaure<int>(a);
 
