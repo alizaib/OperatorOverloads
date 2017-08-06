@@ -19,10 +19,11 @@ void IOManipDemo();
 void StaticDemo();
 void CopyConstructorsDemo();
 void PersonDemo();
+void MatrixDemo();
 
 // Global overload of new and Delete operator
-void* operator new (size_t size) { return calloc(1, size); }
-void operator delete(void* ptr) { free(ptr); }
+//void* operator new (size_t size) { return calloc(1, size); }
+//void operator delete(void* ptr) { free(ptr); }
 
 template<class T>
 T sqaure(T x) {
@@ -42,9 +43,9 @@ void main()
 	//CopyConstructorsDemo();
 	//PersonDemo();
 
-	
-	float a = 10.9;
-	cout <<sqaure<int>(a);
+	//float a = 10.9;
+	//cout <<sqaure<int>(a);
+	MatrixDemo();
 
 	
 
@@ -217,9 +218,9 @@ void CopyConstructorsDemo()
 	Matrix m1(2, 3);
 	Matrix m2 = m1;
 	
-	m1.DisplayPointerAddress();
+	m1.output(cout);
 	cout << endl;
-	m2.DisplayPointerAddress();
+	m2.output(cout);
 
 	// Following two lines will call Assignment operator
 	/*Matrix m3(3, 3);
@@ -229,4 +230,33 @@ void CopyConstructorsDemo()
 void PersonDemo() {
 	Person p("Ali", 24, 3, 1984);
 	p.DisplayInfo();
+}
+
+void MatrixDemo() {
+	/*int rows, cols;
+	cout << "Enter rows, cols separated by space: "; cin >> rows >> cols;
+	Matrix m1(rows, cols);
+	m1.input(cin);
+	m1.output(cout);
+	cout << "Ater transposing....";
+	m1.Transpose();
+	m1.output(cout);*/
+
+	/*Matrix m1(2, 3), m2(3, 2);
+	m1.input(cin);
+	m2.input(cin);
+
+	Matrix m3 = m1 * m2;
+	cout << "\nMultiplying the above two matrices....";
+	m3.output(cout);*/
+
+	int rows, cols;
+	cout << "Enter rows, cols separted by space: "; cin >> rows >> cols;
+	Matrix m(rows, cols);
+	m.input(cin);
+	double d;
+	cout << "Enter value to multiply the above matrix with: "; cin >> d;
+	//Matrix result = m *d; //using member operator
+	Matrix result = d * m;  //using friend operator
+	result.output(cout);
 }

@@ -1,49 +1,29 @@
 #pragma once
 #include <iostream>
+#include <ostream>
+#include <iomanip>
 using namespace std;
-
 class Matrix
 {
 private:
-	int* m;
+	double **elements;
 	int rows, cols;
 public:
-	Matrix(const Matrix& other)
-	{
-		cout << "\nInside copy constructor\n";
-		this->rows = other.rows;
-		this->cols = other.cols;
+	Matrix(int rows = 0, int cols = 0);
+	Matrix(const Matrix& m);
+	~Matrix();
 
-		m = new int[other.rows*other.cols];
-	}
+	int getRows() const;
+	int getCols() const;
 
-	Matrix(int rows, int cols)
-	{
-		this->rows = rows;
-		this->cols = cols;
+	void output(ostream &os) const;
+	const Matrix& input(istream &is);
 
-		m = new int[rows * cols];
-	}
-	void DisplayPointerAddress()
-	{
-		cout << &m;
-	}
+	const Matrix& operator=(const Matrix&);
 
-	Matrix& operator = (const Matrix& other)
-	{
-		cout << "\nInside assignment operator\n";
-		// check for self reference
-		if (&other == this)
-			return *this;
+	Matrix operator*(const Matrix&);
+	Matrix operator*(const double);
+	friend Matrix operator*(const double, const Matrix&);
 
-		this->rows = other.rows;
-		this->cols = other.cols;
-
-		m = new int[other.rows*other.cols];
-
-		return *this;
-	}
-	~Matrix() {
-		delete[] m;
-	}
+	const Matrix& Transpose();
 };
