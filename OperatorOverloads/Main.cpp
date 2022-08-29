@@ -176,7 +176,7 @@ void IOManipDemo()
 	cin >> j;
 	cout << j << endl;*/
 
-	std::streamsize ss = cout.precision();
+	std::streamsize ss = cout.precision();	
 	cout << setprecision(5) << 3.1415926 << endl;
 
 	cout.setf(ios::showbase);
@@ -218,9 +218,7 @@ void CopyConstructorsDemo()
 	Matrix m1(2, 3);
 	Matrix m2 = m1;
 	
-	m1.output(cout);
-	cout << endl;
-	m2.output(cout);
+	cout << m1 << endl << m2;
 
 	// Following two lines will call Assignment operator
 	/*Matrix m3(3, 3);
@@ -253,10 +251,12 @@ void MatrixDemo() {
 	int rows, cols;
 	cout << "Enter rows, cols separted by space: "; cin >> rows >> cols;
 	Matrix m(rows, cols);
-	m.input(cin);
+	cin >> m;
+
 	double d;
 	cout << "Enter value to multiply the above matrix with: "; cin >> d;
 	//Matrix result = m *d; //using member operator
 	Matrix result = d * m;  //using friend operator
-	result.output(cout);
+	cout << result;
+	//result.output(cout);
 }

@@ -15,15 +15,15 @@ public:
 
 	int getRows() const;
 	int getCols() const;
-
-	void output(ostream &os) const;
-	const Matrix& input(istream &is);
+	
 
 	const Matrix& operator=(const Matrix&);
-
 	Matrix operator*(const Matrix&);
 	Matrix operator*(const double);
 	friend Matrix operator*(const double, const Matrix&);
+
+	friend ostream& operator<<(ostream&, const Matrix&);
+	friend istream& operator>>(istream&, const Matrix&);
 
 	const Matrix& Transpose();
 };

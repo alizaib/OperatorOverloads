@@ -30,40 +30,6 @@ Matrix::~Matrix() {
 int Matrix::getRows() const { return rows; }
 int Matrix::getCols() const { return cols; }
 
-void Matrix::output(ostream &os) const {
-	os.setf(ios::showpoint);
-	os.setf(ios::fixed, ios::floatfield);
-
-	//print first row
-	os << endl << (char)218;
-	for (int j = 0; j < cols; j++)
-		os << setw(10) << "";
-	os << (char)191 << endl;
-
-	//print matrix value with bars at start and end
-	for (int i = 0; i < rows; i++) {
-		os << (char)179;
-		for (int j = 0; j < cols; j++)
-			os << setw(10) << setprecision(2) << elements[i][j];
-		os << (char)179 << endl;
-	}
-
-	//print last row
-	os << (char)192;
-	for (int j = 0; j < cols; j++)
-		os << setw(10) << "";
-	os << (char)217 << endl;
-}
-const Matrix& Matrix::input(istream &is) {
-	cout << "Input Matrix size:" << rows << " rows by " << cols << " columns \n";
-	for (int i = 0; i < rows; i++) {
-		cout << "Please enter " << cols << " values separated by spaces for row " << i + 1 << ":  ";
-		for (int j = 0; j < cols; j++)
-			is >> elements[i][j];
-	}
-	return *this;
-}
-
 const Matrix& Matrix::operator=(const Matrix& m) {
 	if (&m != this) { //check if both m and this are not refering to the same location
 		if (m.cols != this->cols || m.rows != this->rows) {
@@ -134,4 +100,48 @@ const Matrix& Matrix::Transpose() {
 		*this = temp;
 	}
 	return *this;
+}
+
+ostream& operator << (ostream& os, const Matrix& m)  {
+	os.setf(ios::showpoint);
+	os.setf(ios::fixed, ios::floatfield);
+
+	//print first row
+	os << endl << (char)218;
+	for (int j = 0; j < m.cols; j++) {
+		os << setw(10) << "";
+	}
+	os << (char)191 << endl;
+
+
+	//print matrix value with bars at start and end
+	for (int i = 0; i < m.rows; i++) {
+		os << (char)179;
+		for (int j = 0; j < m.cols; j++) {
+			os << setw(10);
+			j == 0 ? os << left : os << right;
+			os << setprecision(2) << m.elements[i][j];
+		}
+		os << (char)179 << endl;
+	}
+
+	//print last row
+	os << (char)192;
+	for (int j = 0; j < m.cols; j++) {
+		os << setw(10) << "";
+	}
+
+	os << (char)217 << endl;
+
+	return os;
+}
+
+istream& operator >> (istream& is, const Matrix& m) {
+	cout << "Input Matrix size:" << m.rows << " rows by " << m.cols << " columns \n";
+	for (int i = 0; i < m.rows; i++) {
+		cout << "Please enter " << m.cols << " values separated by spaces for row " << i + 1 << ":  ";
+		for (int j = 0; j < m.cols; j++)
+			is >> m.elements[i][j];
+	}
+	return is;
 }
