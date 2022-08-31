@@ -6,38 +6,36 @@ class String
 {
 private:
 	char* buff;
+	void setValue(const char* s);
 public:
-	String() 
-	{ 
-		buff = new char[30];
-		strcpy(buff, "");
-	}
-	String(const char* s)
-	{
-		buff = new char[30];
-		strcpy(buff, s);
-	}
-	void Display()
-	{
-		cout << buff << endl;
-	}
-	int length() const
-	{
-		return strlen(buff);
-	}
+	String();
+	String(const char* s);
+	explicit String(int);
 
-	String& operator = (const String& other) 
-	{
-		if (this == &other)
-			return *this;
-		int length = other.length();
-		delete buff;
-		buff = new char[length + 1];
-		strcpy(buff, other.buff);
-		return *this;
-	}
-	~String()
-	{
-		delete[] buff;
-	}
+	int length() const;	
+
+	
+	String& operator = (const String& other);	
+	char operator[](int index);
+
+	//type cast operators to other types
+	// No return type is specifed as 
+	// is implicitly taken to be the casting type by compiler
+	operator char* ();
+	operator int();
+
+	// Drawback of operator int(); is that
+	// if there is no operator << and you type cout<<stringObject
+	// compiler will try to convert String to a type it can display
+	// int in this case and will return junk
+	// so avoid using implicit operator overload and use member functions
+	// like AsInt()
+	
+
+	//insertion extraction operator
+	friend ostream& operator<<(ostream&, const String&);
+	friend istream& operator>>(istream&, String&);
+
+	~String();
+	
 };

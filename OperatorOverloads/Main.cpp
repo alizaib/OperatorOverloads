@@ -35,7 +35,7 @@ void main()
 	//DistanceDemo();
 	//DateDemo();
 	//FractionDemo();
-	//StringDemo();
+	StringDemo();
 	//FractionDemoConversionByConstructor();
 	//DemoNewDeleteOperator();
 	//IOManipDemo();
@@ -45,7 +45,7 @@ void main()
 
 	//float a = 10.9;
 	//cout <<sqaure<int>(a);
-	MatrixDemo();
+	//MatrixDemo();
 
 	
 
@@ -138,11 +138,38 @@ void FractionDemo() {
 
 void StringDemo()
 {
-	String c1("Hello");
-	String c2, c3;
-	c2 = c3 = c1;
-	c2.Display();
-	c3.Display();
+	// stream operator overload
+	/*String c1;
+	cout << "Enter name: ";
+	cin >> c1;
+	cout << c1;
+	cout << "\ncharacter at index 2 is: " << c1[2];*/
+
+	//int operator overload
+	/*int number;
+	cout << "\nEnter a long number to store as string: "; cin >> number;
+	String c2(number);	
+	cout << c2;*/
+
+	// if explicit keywork is not used the following line will call
+	// String(int) constructor
+	//String c3 = 'A';
+	//cout << c3;
+
+	// As the constructor String(int) is marked with explicit keyword
+	// we have to explicitly convert int to string
+	/*String c4 = (String)65; 
+	cout << c4;*/
+
+	// Type conversion operator
+	/*String c4("520");
+	int num = c4;
+	cout << c4 << endl;
+
+	String c5("Zaib");
+	char* name = c5;
+	cout << c5 << endl;*/
+
 }
 
 void FractionDemoConversionByConstructor()
@@ -151,6 +178,7 @@ void FractionDemoConversionByConstructor()
 	result = f1 + f2;
 	result.Display();
 }
+
 void DemoNewDeleteOperator()
 {
 	// Allocate a zero-filled array
@@ -162,6 +190,9 @@ void DemoNewDeleteOperator()
 	delete[] ip;
 }
 
+ostream& tab(ostream& os) {
+	return os << '\t';
+}
 void IOManipDemo()
 {
 	int i = 10;
@@ -194,6 +225,10 @@ void IOManipDemo()
 
 	cout.setf(ios::fixed, ios::floatfield);
 	cout << number << endl;
+
+	
+	cout << dec << i << tab << i << endl;
+	cout << i << tab << i;
 }
 
 class Truck {
