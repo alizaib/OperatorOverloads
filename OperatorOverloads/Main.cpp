@@ -243,6 +243,7 @@ void Foo()
 	i++;
 	cout << "Inside Foo: value of i = " << i << endl;
 }
+
 void StaticDemo()
 {
 	for (int i = 0; i < 10; i++)
@@ -263,7 +264,9 @@ void CopyConstructorsDemo()
 
 void PersonDemo() {
 	Person p("Ali", 24, 3, 1984);
-	cout << p;
+	cout << p << endl;
+
+	cout << "Total count of person objects " << Person::count;
 }
 
 void MatrixDemo() {

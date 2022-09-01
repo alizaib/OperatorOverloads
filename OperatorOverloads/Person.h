@@ -9,6 +9,8 @@ private:
 	char* Name;
 	Date dob;
 public:
+	static int count;
+
 	Person(const char* name, int day, int month, int year);
 	~Person();
 
