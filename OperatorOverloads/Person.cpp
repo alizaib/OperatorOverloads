@@ -1,19 +1,20 @@
 #include "Person.h"
-#include <string.h>
-#include <iostream>
-using namespace std;
 
-Person::Person(const char* name, int day, int month, int year) : dob(day, month, year) {
-	cout << "\nInside Person Constructor\n";
+Person::Person(const char* name, int day, int month, int year) 
+			: dob(day, month, year), Id(day+month+year) {
+
+	Log("\nInside Person Constructor\n");
 	Name = new char[strlen(name)];
-	strcpy(Name, name);
+	strcpy(Name, name);	
 }
 Person::~Person() {
-	cout << "\nInside destructor of Person";
+	Log("\nInside destructor of Person");
 }
 
-void Person::DisplayInfo() {
-	cout << Name;
-	cout << "\nDate of birth: ";
-	dob.Display();
+ostream& operator << (ostream& os, const Person& p) {
+	os << p.Name;
+	os << "\nDate of birth: ";
+	os << p.dob;
+
+	return os;
 }

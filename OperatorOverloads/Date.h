@@ -1,4 +1,5 @@
 #pragma once
+#include "Log.h"
 
 class Date {
 private:
@@ -10,8 +11,9 @@ private:
 public:
 	Date(int day = 1, int month = 1, int year = 1990);
 	~Date();
-	void SetDate(int day, int month, int year);
-	void Display();
+	void SetDate(int day, int month, int year);	
+
+	friend ostream& operator << (ostream&, const Date&);
 
 	//operator overloads
 	Date operator + (int numOfDays);

@@ -1,17 +1,15 @@
 #include "Date.h"
-#include <iostream>
-using namespace std;
 
 const int Date::DaysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 // Constrcutors
 Date::Date(int d, int m, int y) {
-	cout << "\nInside Constructor of Date\n";
+	Log("\nInside Constructor of Date\n");
 	SetDate(d, m, y);
 }
 
 Date::~Date() {
-	cout << "\nInside Destructor of Date\n";
+	Log("\nInside Destructor of Date\n");
 }
 
 // Private member funtions
@@ -51,8 +49,9 @@ void Date::SetDate(int d, int m, int y) {
 
 }
 
-void Date::Display() {
-	cout << "\nDate:" << day << "-" << month << "-" << year;
+ostream& operator << (ostream& os, const Date& date) {
+	os << "\nDate:" << date.day << "-" << date.month << "-" << date.year;
+	return os;
 }
 
 Date Date::operator + (int numOfDays) {

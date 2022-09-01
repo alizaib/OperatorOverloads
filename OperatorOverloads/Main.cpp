@@ -35,13 +35,13 @@ void main()
 	//DistanceDemo();
 	//DateDemo();
 	//FractionDemo();
-	StringDemo();
+	//StringDemo();
 	//FractionDemoConversionByConstructor();
 	//DemoNewDeleteOperator();
 	//IOManipDemo();
 	//StaticDemo();
 	//CopyConstructorsDemo();
-	//PersonDemo();
+	PersonDemo();
 
 	//float a = 10.9;
 	//cout <<sqaure<int>(a);
@@ -98,18 +98,18 @@ void DistanceDemo() {
 
 void DateDemo() {
 	Date d1(26, 12, 2002), d2(28, 2, 2000), d3;
-	d1.Display();
+	cout << d1;
 	++d1;
 	cout << "\nAfter adding 1 day, the date is ";
-	d1.Display();
+	cout << d1;
 	cout << endl;
-	d2.Display();
+	cout << d2;
 	d2 = d2 + 5;
 	cout << "\nAfter adding 5 days to the above date";
-	d2.Display();
+	cout << d2;
 	d2 += 5;
 	cout << "\nAfter adding 5 days to the above date using += operator";
-	d2.Display();
+	cout << d2;
 	cout << "\nd1 > d2 : " << (d1 > d2);
 	cout << "\nd1 < d2 : " << (d1 < d2);
 
@@ -193,6 +193,7 @@ void DemoNewDeleteOperator()
 ostream& tab(ostream& os) {
 	return os << '\t';
 }
+
 void IOManipDemo()
 {
 	int i = 10;
@@ -262,7 +263,7 @@ void CopyConstructorsDemo()
 
 void PersonDemo() {
 	Person p("Ali", 24, 3, 1984);
-	p.DisplayInfo();
+	cout << p;
 }
 
 void MatrixDemo() {
