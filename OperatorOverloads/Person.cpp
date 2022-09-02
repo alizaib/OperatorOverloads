@@ -3,15 +3,13 @@
 int Person::count = 0;
 
 Person::Person(const char* name, int day, int month, int year) 
-			: dob(day, month, year), Id(day+month+year) {
+			: Name(name), dob(day, month, year), Id(day+month+year) {
 
-	Log("\nInside Person Constructor\n");
-	Name = new char[strlen(name)];
-	strcpy(Name, name);	
+	Log("Inside Person Constructor");	
 	Person::count++;
 }
 Person::~Person() {
-	Log("\nInside destructor of Person");
+	Log("Inside destructor of Person");
 	Person::count--;
 }
 

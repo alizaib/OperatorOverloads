@@ -4,12 +4,12 @@ const int Date::DaysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30,
 
 // Constrcutors
 Date::Date(int d, int m, int y) {
-	Log("\nInside Constructor of Date\n");
+	Log("Inside Constructor of Date");
 	SetDate(d, m, y);
 }
 
 Date::~Date() {
-	Log("\nInside Destructor of Date\n");
+	Log("Inside Destructor of Date");
 }
 
 // Private member funtions

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Log.h"
 using namespace std;
 
 class String

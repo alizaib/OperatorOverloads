@@ -150,6 +150,7 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="String.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

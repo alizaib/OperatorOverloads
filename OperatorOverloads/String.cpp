@@ -1,25 +1,29 @@
 #include "String.h"
 
-void String::setValue(const char* s) {
-	delete[] buff;
-
-	buff = new char[30];
-	strcpy(buff, s);
-}
-
-String::String() {
+String::String() : buff(NULL) {
+	Log("Inside default constructor of string");
 	buff = new char[30];
 	strcpy(buff, "");
 }
 
-String::String(const char* s) {
-	buff = new char[30];
-	strcpy(buff, s);
+String::String(const char* s) : buff(NULL) {
+	Log("Inside overloaded constructor (const char*) of string");
+	/*buff = new char[30];
+	strcpy(buff, s);*/
+	setValue(s);
 }
 
 String::String(int num) {	
 	buff = new char[30];	
 	itoa(num, buff, 10);
+}
+
+void String::setValue(const char* s) {	
+	if(buff != nullptr)
+		delete[] buff;
+
+	buff = new char[30];
+	strcpy(buff, s);
 }
 
 int String::length() const {
@@ -28,6 +32,7 @@ int String::length() const {
 
 String& String::operator = (const String& other)
 {
+	Log("Inside assignment operator of string");
 	if (this == &other)
 		return *this;
 	int length = other.length();
@@ -76,5 +81,6 @@ istream& operator>>(istream& is, String& s) {
 
 //destructor
 String::~String() {
+	Log("Inside destructor of string");
 	delete[] buff;
 }

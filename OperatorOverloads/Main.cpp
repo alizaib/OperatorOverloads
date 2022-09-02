@@ -5,6 +5,7 @@
 #include "String.h"
 #include "Matrix.h"
 #include "Person.h"
+#include "Test.h"
 #include <iomanip>
 
 using namespace std;
@@ -20,6 +21,7 @@ void StaticDemo();
 void CopyConstructorsDemo();
 void PersonDemo();
 void MatrixDemo();
+void TestDemo();
 
 // Global overload of new and Delete operator
 //void* operator new (size_t size) { return calloc(1, size); }
@@ -46,6 +48,8 @@ void main()
 	//float a = 10.9;
 	//cout <<sqaure<int>(a);
 	//MatrixDemo();
+
+	//TestDemo();
 
 	
 
@@ -298,4 +302,10 @@ void MatrixDemo() {
 	Matrix result = d * m;  //using friend operator
 	cout << result;
 	//result.output(cout);
+}
+
+void TestDemo() {
+	Test arr[2] = { Test(0), Test(1) };
+
+	Test t(arr[0]);
 }

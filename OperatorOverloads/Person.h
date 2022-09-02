@@ -1,12 +1,12 @@
 #pragma once
 #include "Date.h"
-#include <string.h>
+#include "String.h"
 #include "Log.h"
 
 class Person {
 private:
 	const int Id;	
-	char* Name;
+	String Name;
 	Date dob;
 public:
 	static int count;
