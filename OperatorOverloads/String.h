@@ -32,6 +32,7 @@ public:
 	// so avoid using implicit operator overload and use member functions
 	// like AsInt()
 	
+	String& operator=(const char* s);
 
 	//insertion extraction operator
 	friend ostream& operator<<(ostream&, const String&);

@@ -145,10 +145,12 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Distance.cpp" />
     <ClCompile Include="Fraction.cpp" />
+    <ClCompile Include="Inheritence.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Polymorphism.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
@@ -159,6 +161,7 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="Polymorphism.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="Test.h" />
   </ItemGroup>

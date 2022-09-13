@@ -7,6 +7,8 @@
 #include "Person.h"
 #include "Test.h"
 #include <iomanip>
+#include "Inheritence.cpp"
+#include "Polymorphism.h"
 
 using namespace std;
 
@@ -22,6 +24,9 @@ void CopyConstructorsDemo();
 void PersonDemo();
 void MatrixDemo();
 void TestDemo();
+void InheritenceDemo();
+void PolymorphismDemo();
+void FunctionTemplateDemo();
 
 // Global overload of new and Delete operator
 //void* operator new (size_t size) { return calloc(1, size); }
@@ -37,23 +42,23 @@ void main()
 	//DistanceDemo();
 	//DateDemo();
 	//FractionDemo();
-	//StringDemo();
+	StringDemo();
 	//FractionDemoConversionByConstructor();
 	//DemoNewDeleteOperator();
 	//IOManipDemo();
 	//StaticDemo();
 	//CopyConstructorsDemo();
-	PersonDemo();
+	//PersonDemo();
 
 	//float a = 10.9;
 	//cout <<sqaure<int>(a);
 	//MatrixDemo();
 
 	//TestDemo();
+	//InheritenceDemo();	
+	//PolymorphismDemo();
+	//FunctionTemplateDemo();
 
-	
-
-	cout << endl;
 	system("pause");
 }
 
@@ -173,6 +178,13 @@ void StringDemo()
 	String c5("Zaib");
 	char* name = c5;
 	cout << c5 << endl;*/
+
+	//As this is definition and initalization on the same line, so it will call the constructor const char*
+	//String c4 = "520";
+
+	//The object is created and then operator = will be called
+	/*String c4;
+	c4 = "520";*/
 
 }
 
@@ -308,4 +320,66 @@ void TestDemo() {
 	Test arr[2] = { Test(0), Test(1) };
 
 	Test t(arr[0]);
+}
+
+void InheritenceDemo() {
+	Child c;
+}
+
+// Don't treat Shape shapes[], polymorphically, will through error on the next iteration
+// Do it like this 
+/*
+*  Shape shapes[]   //shapes is a pointer to object of type Shape, a constant poitner,
+*  so get next value dereference it after adding i
+*  *(shapes + i*sizeof(Shape)).Draw();
+*  OR 
+*  (shapes + i*sizeof(Shape))->Draw();
+*/
+void DrawShapes(Shape* shapes[], int size) {
+	for (int i = 0; i < size; i++) {
+		shapes[i] -> Draw();
+	}
+}
+
+void PolymorphismDemo(){
+	Shape* shapes[4]; //create 3 pointer of type shape
+
+	shapes[0] = new Circle(); //new Shape() will now give error as Shape has a pure virtual method and hence is an abstract class
+	shapes[1] = new Circle();
+	shapes[2] = new Line();
+	shapes[3] = new Rectangle();
+
+	DrawShapes(shapes, 4);	
+}
+
+template<typename T>
+bool IsEqual(T x, T y) {
+	return x == y;
+}
+
+template<>
+bool IsEqual<const char*>(const char* x, const char* y) {
+	return (strcmp(x, y) == 0);
+}
+
+template<class T, class U>
+T MyCast(U u) {
+	return (T)u;
+}
+
+void FunctionTemplateDemo() {
+	/*cout << IsEqual(4, 4) << endl;
+	cout << IsEqual(5.0, 5.0) << endl;
+	cout << IsEqual("Ali", "Ali") << endl;
+	cout << IsEqual("Ali", "Zaib") << endl;*/
+
+	double d = 24.356;
+	int j = MyCast<int>(d);
+	cout << j;
+
+	// This will give compiler error as there is == overload for string
+	// will resolve however if == operator is provided for String class
+	/*String s1 = "abc", s2 = "xyz";
+	cout << IsEqual(s1, s2);*/
+
 }

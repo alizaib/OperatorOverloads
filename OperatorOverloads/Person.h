@@ -5,9 +5,9 @@
 
 class Person {
 private:
-	const int Id;	
-	String Name;
+	const int Id;		
 	Date dob;
+	String Name;
 public:
 	static int count;
 

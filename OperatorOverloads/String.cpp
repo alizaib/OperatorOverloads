@@ -63,6 +63,17 @@ String::operator int() {
 	}
 }
 
+String& String::operator=(const char* s) {
+	Log("Inside operator =  of string");
+	if (buff != nullptr)
+		delete[] buff;
+
+	buff = new char[30];
+	strcpy(buff, s);
+
+	return *this;
+}
+
 
 //insertion extraction operator
 ostream& operator<<(ostream& os, const String& s) {
